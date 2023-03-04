@@ -1,0 +1,28 @@
+{% extends 'main.html' %} {% block title %}<title>POSTS</title> {%endblock%}
+{%block main_content %}
+
+<h1>ALL POSTS</h1>
+<div>
+  {% if all_posts %} {% for post in all_posts %}
+
+  <div class="card my-card" style="margin: 3rem 0">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      {% if post.subtitle != None %}
+      <h6 class="card-title">{{post.subtitle}}</h6>
+      {% endif %}
+
+      <p class="card-text">{{post_description|safe}}</p>
+      <p class="card-text">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </p>
+    </div>
+    {% if post.post_img%}
+    <img src="{{post.post_img.url}}" class="card-img-bottom" alt="..." />
+    {% endif %}
+    <a href="{% url 'post-detail' post.id %}" class="btn btn-primary"
+      >Leer mas...</a
+    >
+  </div>
+  {% endfor %} {% endif %} {% endblock %}
+</div>
