@@ -2,14 +2,22 @@
   <div class="container">
     <a class="navbar-brand color" href="">CoderBlog</a>
     <a class="navbar-brand color" href="{% url 'all-posts' %}">General</a>
+
+    {% if user.is_authenticated %}
     <a class="navbar-brand color" href="{% url 'post-form'%}">POST IT!</a>
-    <a class="navbar-brand color" href="">Comentarios</a>
-
-    <p class="navbar-brand color">Hola !</p>
-
-    <a class="btn btn-primary" href="">Cerrar sesion</a>
-    <a class="btn btn-primary" href="">Editar perfil</a>
-
-    <a class="btn btn-primary" href="">Login</a>
+    <span class="navbar-brand color">Hi {{user.username}}!</span>
+    {% if user.avatar %}
+    <img
+      src="{{ user.avatar.image.url }}"
+      class="rounded-circle"
+      height="40px"
+      alt="{{user.username}}"
+    />
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'logout' %}">Log out</a>
+    <a class="btn btn-primary" href="{% url 'edit-profile' %}">Edit profile</a>
+    {% else %}
+    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+    {% endif %}
   </div>
 </nav>
