@@ -1,6 +1,7 @@
 {% extends 'main.html' %} {% block title %}<title>Edit avatar</title>
 {%endblock%} {% block main_content %}
-<div>
+<div style="width: 70%; margin: auto">
+  <h2 class="mb-5">Edit your avatar</h2>
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %} {{my_form.as_p}}
 
