@@ -1,0 +1,13 @@
+{% extends 'main.html' %} {% block title %}<title>User register</title>
+{%endblock%} {% block main_content %}
+<div>
+  {% if message %}
+  <p style="color: red">{{message}}</p>
+  {% endif %}
+  <form action="" method="POST">
+    {% csrf_token%} {{ form.as_p}}
+
+    <button class="btn btn-primary mb-3" type="submit">Register</button>
+  </form>
+</div>
+{% endblock %}

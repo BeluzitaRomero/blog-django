@@ -1,0 +1,20 @@
+{% extends 'main.html' %} {% block title %}
+<title>Edit profile</title> {%endblock%} {% block main_content %}
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Edit profile</h1>
+    <h3>Username: {{user.username}}</h3>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{ my_form.as_table }}
+      </table>
+      <input class="btn btn-primary my-3" type="submit" value="Edit profile" />
+    </form>
+    <a class="btn btn-primary my-3" href="{% url 'edit-avatar' %}"
+      >EDIT AVATAR</a
+    >
+  </div>
+</div>
+{% endblock %}

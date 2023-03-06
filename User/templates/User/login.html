@@ -1,0 +1,17 @@
+{% extends 'main.html' %} {% block title %}<title>Login</title>{%endblock%}
+{%block main_content %}
+<div>
+  {% if message %}
+  <p style="color: red">{{message}}</p>
+  {% endif %}
+  <form action="" method="POST">
+    {% csrf_token%} {{ form.as_p}}
+
+    <button class="btn btn-primary mb-3" type="submit">Login</button>
+  </form>
+  <p>
+    Are you not registered??
+    <a href="{% url 'register' %}">Click here to register</a>
+  </p>
+</div>
+{% endblock %}
