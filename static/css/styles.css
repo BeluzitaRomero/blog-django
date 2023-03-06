@@ -8186,7 +8186,7 @@ fieldset:disabled .btn {
 }
 
 .bg-success {
-  --bs-bg-opacity: 1;
+  --bs-bg-opacity: 0.3;
   background-color: rgba(
     var(--bs-success-rgb),
     var(--bs-bg-opacity)
