@@ -8,4 +8,11 @@ class PostForm(ModelForm):
         fields = '__all__'
         exclude = ['author']
 
+        widgets = {
+            'title': forms.TextInput(attrs = {'class':'form-input', 'placeholder': 'This is the title of the post'}),
+            'subtitle': forms.TextInput(attrs = {'class':'form-input'}),
+            
+            
+        }
+
  

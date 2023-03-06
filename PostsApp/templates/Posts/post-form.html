@@ -3,7 +3,7 @@
 </title>
 {%endblock%} {% block main_content %}
 <div style="width: 70%; margin: auto">
-  <h2>New post</h2>
+  <h2 class="mb-5">New post</h2>
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token%} {% for field in form %} {{field.label}}
     <br />
@@ -12,7 +12,7 @@
     {%endfor%} {% if update %}
     <button class="btn btn-primary my-3" type="submit">Update</button>
     {% else %}
-    <button class="btn btn-primary my-3" type="submit">Save</button>
+    <button class="btn btn-primary my-3" type="submit">Post it!</button>
     {% endif %}
   </form>
 </div>
