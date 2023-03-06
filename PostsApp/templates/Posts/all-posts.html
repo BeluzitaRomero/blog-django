@@ -2,11 +2,12 @@
 {%block main_content %}
 
 <h1>ALL POSTS</h1>
-<div>
+<div class="d-flex flex-column align-items-center">
   {% if all_posts %} {% for post in all_posts %}
 
   <div class="card my-card" style="margin: 3rem 0">
     <div class="card-body">
+      <h4 class="card-title">Created by: {{post.author.username}}</h4>
       <h5 class="card-title">{{post.title}}</h5>
       {% if post.subtitle != None %}
       <h6 class="card-title">{{post.subtitle}}</h6>
@@ -24,5 +25,7 @@
       >Leer mas...</a
     >
   </div>
-  {% endfor %} {% endif %} {% endblock %}
+  {% endfor %} {% else %}
+  <span style="color: red"> No post found</span>
+  {% endif %} {% endblock %}
 </div>

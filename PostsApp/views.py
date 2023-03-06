@@ -1,20 +1,26 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm
+from django.contrib.auth.models import User
 
 
 def all_posts(request):
     all_posts = Post.objects.all()
-    context = {'all_posts': all_posts}
+
+    print("REQUEST.USER",(str(request.user)))
+
+    context = {'all_posts': all_posts, }
 
     return render(request, 'Posts/all-posts.html', context)
 
 def post_detail(request, pk):
     post = Post.objects.get(id=pk)
 
-    context= {'post': post}
+    context= {'post': post, 'req': str(request.user)}
     return render(request, 'Posts/post-detail.html', context)
 
+@login_required
 def post_form(request):
     form = PostForm()
 
@@ -23,7 +29,8 @@ def post_form(request):
         if form.is_valid():
             data = form.cleaned_data
             print("ESTE ES DATA", data)
-            new_post = Post(title = data['title'],
+            new_post = Post(author = request.user,
+                            title = data['title'],
                             subtitle=data['subtitle'],
                             post_description = data['post_description'],
                             post_img = data['post_img'])
@@ -33,6 +40,7 @@ def post_form(request):
     context = {'form':form}
     return render(request, 'Posts/post-form.html', context)
 
+@login_required
 def delete_post(request, pk):
     post_to_delete = Post.objects.get(id= pk)
     context = {'post_delete': post_to_delete}
@@ -43,6 +51,7 @@ def delete_post(request, pk):
 
     return render(request, 'alert.html', context)
 
+@login_required
 def update_post(request, pk):
     post_update = Post.objects.get(id= pk)
     post_form = PostForm(instance=post_update)
