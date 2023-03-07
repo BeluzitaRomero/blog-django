@@ -22,7 +22,7 @@ def login_request(req):
 
             if user is not None:
                 login(req, user)
-                return render(req, 'main.html', {'message': f'Bienvenido {user}'})
+                return render(req, 'User/login-success.html', {'message': f'Welcome, {user}!'})
 
             else:
                 return render(req, 'User/login.html', {'message': f'Error: el usaurio no existe', 'form': form})

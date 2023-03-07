@@ -1,24 +1,58 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
+
 
 
 
 def all_posts(request):
-    all_posts = Post.objects.all()
-
-    print("REQUEST.USER",(str(request.user)))
+    all_posts = Post.objects.all().order_by('-id')
 
     context = {'all_posts': all_posts, }
 
     return render(request, 'Posts/all-posts.html', context)
 
 def post_detail(request, pk):
+    #En esta view me traigo un post por id y ademas el form de comentarios
+    #para poder ver el post y comentar dentro de la misma template
     post = Post.objects.get(id=pk)
 
-    context= {'post': post, 'req': str(request.user)}
+    comment_form = CommentForm()
+
+    #Si se hace POST del comentario:
+    if request.method == 'POST':
+        comment_form= CommentForm(request.POST)
+        if comment_form.is_valid():
+            data = comment_form.cleaned_data
+
+            new_comment = Comment(post_id = post, 
+                                  comment = data['comment'],
+                                  username=request.user)
+            new_comment.save()
+
+            #Queria redireccionar dentro del mismo detalle para ver el 
+            #comentario en el momento
+            return redirect(f'/post-detail/{post.id}')
+
+    #Sino, creo un contexto del listado de comentarios y una evaluacion
+    #para saber si existen o no comentarios, para poder usarlo en el template
+    #como condicion para mostrar o no el listado
+
+    all_comments = Comment.objects.filter(post_id=post.id)
+    len_comments = len(all_comments) > 0
+
+    comment_context = {'all': all_comments, 'len_comments': len_comments}
+
+    #la clave 'req' la utilizo para poder comparar al usuario autenticado con
+    #el usuario autor del post y de esa manera, mostrar o no botones de delete/update
+    context= {'post': post, 'req': str(request.user), 
+              'comments':comment_context, 
+              'comment_form':comment_form}
+    
     return render(request, 'Posts/post-detail.html', context)
+
+
 
 @login_required
 def post_form(request):
@@ -28,7 +62,7 @@ def post_form(request):
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             data = form.cleaned_data
-            print("ESTE ES DATA", data)
+           
             new_post = Post(author = request.user,
                             title = data['title'],
                             subtitle=data['subtitle'],
@@ -68,4 +102,5 @@ def update_post(request, pk):
 
 
     return render(request, 'Posts/post-form.html', context)
+
 

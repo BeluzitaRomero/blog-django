@@ -52,6 +52,16 @@ li {
   margin: auto;
 }
 
+.comment-bg {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.3)
+  );
+  padding: 1rem;
+  margin-top: 0.5rem;
+  width: fit-content;
+}
+
 .form-input {
   border: 0;
   outline: 0;
