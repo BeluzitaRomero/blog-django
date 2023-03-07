@@ -5,6 +5,9 @@ from .forms import PostForm, CommentForm
 
 
 
+# ---------------------------------------------------------------------------- #
+#                                     POSTS                                    #
+# ---------------------------------------------------------------------------- #
 
 def all_posts(request):
     all_posts = Post.objects.all().order_by('-id')
@@ -77,7 +80,7 @@ def post_form(request):
 @login_required
 def delete_post(request, pk):
     post_to_delete = Post.objects.get(id= pk)
-    context = {'post_delete': post_to_delete}
+    context = {'delete': post_to_delete}
 
     if request.method == 'POST':
         post_to_delete.delete()
@@ -98,9 +101,24 @@ def update_post(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post_update)
         form.save()
         
-        return redirect('all-posts')
+        return redirect(f'/post-detail/{post_update.id}')
 
 
     return render(request, 'Posts/post-form.html', context)
 
 
+# ---------------------------------------------------------------------------- #
+#                                   COMMENTS                                   #
+# ---------------------------------------------------------------------------- #
+
+@login_required
+def delete_comment(request, pk):
+    comment_to_delete = Comment.objects.get(id= pk)
+    context = {'delete': comment_to_delete}
+    print('COMMENT_POST_ID',comment_to_delete.post_id)
+
+    if request.method == 'POST':
+        comment_to_delete.delete()
+        return redirect(f'/post-detail/{comment_to_delete.post_id.id}')
+
+    return render(request, 'alert.html', context)

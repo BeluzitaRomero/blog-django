@@ -36,6 +36,11 @@
       <li>
         <article>
           <span class="gradient rounded px-2">{{comment.username}}</span>
+          {% if user.is_authenticated and req == comment.username.username %}
+          <a href="{% url 'delete-comment' comment.id %}" style="color: red"
+            >Delete comment</a
+          >
+          {% endif %}
           <p class="comment-bg rounded my-1">{{comment.comment}}</p>
         </article>
         <p class="text-muted" style="font-size: 12px">{{comment.created_at}}</p>
