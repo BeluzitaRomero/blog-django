@@ -25,4 +25,4 @@ Actualmente, cada usuario que deja un comentario, tiene la posibilidad de elimin
 
 Tambien se incluyen las secciones de actualizacion de datos de perfil y la posibilidad de subir una imagen de avatar que sera visualizada en la barra de navegacion cada vez que se inicie sesion.
 
-Si queres ver una recorrida del blog, podes verlo aqui 👉[https://youtu.be/7OyjVWDCm1U]
+🔍Si queres ver una recorrida del blog, podes verlo aqui 👉[https://youtu.be/7OyjVWDCm1U]
