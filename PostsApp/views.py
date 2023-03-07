@@ -122,3 +122,10 @@ def delete_comment(request, pk):
         return redirect(f'/post-detail/{comment_to_delete.post_id.id}')
 
     return render(request, 'alert.html', context)
+
+# ---------------------------------------------------------------------------- #
+#                                   ABOUT ME                                   #
+# ---------------------------------------------------------------------------- #
+
+def about_me(request):
+    return render(request, 'about-me.html')

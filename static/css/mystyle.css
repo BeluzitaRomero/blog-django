@@ -75,3 +75,37 @@ li {
 .form {
   border: solid green;
 }
+
+.btn-primary {
+  background-color: transparent;
+  /* border: solid 2px rgb(162, 57, 202);
+  color: rgb(162, 57, 202); */
+  border: solid 2px #e7dfdd;
+  color: #e7dfdd;
+}
+
+.btn-primary:hover {
+  background-color: rgb(162, 57, 202);
+  border-color: rgb(162, 57, 202);
+  color: #e7dfdd;
+}
+
+.btn-post {
+  background-color: #0e0b16;
+  border: solid 2px #e7dfdd;
+  color: #e7dfdd;
+}
+
+.btn-post:hover {
+  background-color: rgb(162, 57, 202);
+  border-color: rgb(162, 57, 202);
+  color: #e7dfdd;
+}
+
+.title-about {
+  margin: 2rem;
+}
+
+.p-about {
+  margin: 2rem;
+}

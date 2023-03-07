@@ -7,5 +7,6 @@ urlpatterns = [
     path('post-form', views.post_form, name='post-form'),
     path('delete-post/<pk>', views.delete_post, name='delete-post'),
     path('update-post/<pk>', views.update_post, name='update-post'),
-    path('delete-comment/<pk>', views.delete_comment, name='delete-comment')
+    path('delete-comment/<pk>', views.delete_comment, name='delete-comment'),
+    path('about-me/>', views.about_me, name='about-me'),
 ]

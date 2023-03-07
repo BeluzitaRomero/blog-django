@@ -34,14 +34,22 @@
     <ul class="p-0">
       {% for comment in comments.all %}
       <li>
-        <article>
-          <span class="gradient rounded px-2">{{comment.username}}</span>
+        <article class="mt-3">
+          <span
+            class="gradient rounded px-2"
+            style="font-size: 1.2rem; margin-top: 1rem"
+            >{{comment.username}}</span
+          >
+
+          <p class="comment-bg rounded my-1">{{comment.comment}}</p>
           {% if user.is_authenticated and req == comment.username.username %}
-          <a href="{% url 'delete-comment' comment.id %}" style="color: red"
-            >Delete comment</a
+          <a
+            href="{% url 'delete-comment' comment.id %}"
+            class="btn btn-danger py-1 my-1"
+            style="font-size: 0.8rem"
+            >Delete</a
           >
           {% endif %}
-          <p class="comment-bg rounded my-1">{{comment.comment}}</p>
         </article>
         <p class="text-muted" style="font-size: 12px">{{comment.created_at}}</p>
       </li>

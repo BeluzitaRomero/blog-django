@@ -21,7 +21,7 @@
     <img src="{{post.post_img.url}}" class="card-img-bottom" alt="..." />
     {% endif %}
     <p class="card-title fs-6 mt-2 px-3">By: {{post.author.username}}</p>
-    <a href="{% url 'post-detail' post.id %}" class="btn btn-primary py-1"
+    <a href="{% url 'post-detail' post.id %}" class="btn btn-post py-1"
       >Go to the post!</a
     >
   </div>

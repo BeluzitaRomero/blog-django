@@ -1,7 +1,7 @@
 <nav class="navbar static-top">
   <div class="container">
-    <a class="navbar-brand color" href="">CoderBlog</a>
-    <a class="navbar-brand color" href="{% url 'all-posts' %}">General</a>
+    <a class="navbar-brand color" href="{% url 'all-posts' %}">CoderBlog</a>
+    <a class="navbar-brand color" href="{% url 'about-me' %}">About me</a>
 
     {% if user.is_authenticated %}
     <a class="navbar-brand color" href="{% url 'post-form'%}">POST IT!</a>
@@ -14,12 +14,12 @@
       alt="{{user.username}}"
     />
     {% endif %}
-    <a class="btn btn-primary py-1" href="{% url 'logout' %}">Log out</a>
+    <a class="btn btn-primary py-1" href="{% url 'logout' %}">Sign out</a>
     <a class="btn btn-primary py-1" href="{% url 'edit-profile' %}"
       >Edit profile</a
     >
     {% else %}
-    <a class="btn btn-primary py-1" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-primary py-1" href="{% url 'login' %}">Sign in</a>
     {% endif %}
   </div>
 </nav>
