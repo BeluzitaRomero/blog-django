@@ -15,7 +15,7 @@ Creamos una carpeta donde haremos la clonacion del proyecto
 - Hacemos las migraciones necesarias: `py manage.py migrate`
 - Levantamos el proyecto con: `py manage.py runserver`
 - Puedes crear un administrador mediante: `py manage.py createsuperuser` : esto te pedira un nombre de usuario, email y contraseña (con repeticion de contraseña).
-  Para acceder como administrador, deberas ir a la url "admin" para iniciar sesion y poder ver los permisos de usuarios y los registros en la base de datos.
+  Para acceder como administrador, deberas ir a la url "/admin" para iniciar sesion y poder ver los permisos de usuarios y los registros en la base de datos.
 
 Este proyecto consta de un blog con su propio registro y login de usuarios, en el cual pueden crear sus propios posteos con encabezados, desarrollo e incluso imagenes.
 Los mismos pueden ser editados o eliminados por sus autores.
