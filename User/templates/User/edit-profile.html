@@ -9,9 +9,15 @@
     <table>
       {{ my_form.as_p }}
     </table>
-    <input class="btn btn-primary my-3" type="submit" value="Edit profile" />
+    <input
+      class="btn btn-primary my-3 py-1"
+      type="submit"
+      value="Edit profile"
+    />
+    <a class="btn btn-primary my-3 py-1" href="{% url 'edit-avatar' %}"
+      >Edit avatar</a
+    >
   </form>
-  <a class="btn btn-primary my-3" href="{% url 'edit-avatar' %}">Edit avatar</a>
 </div>
 
 {% endblock %}

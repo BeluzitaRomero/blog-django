@@ -5,7 +5,11 @@
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %} {{my_form.as_p}}
 
-    <input class="btn btn-primary my-3" type="submit" value="Save changes" />
+    <input
+      class="btn btn-primary my-3 py-1"
+      type="submit"
+      value="Save changes"
+    />
   </form>
 </div>
 

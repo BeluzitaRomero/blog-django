@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 from .models import Avatar
 
 class UserCreationForm(UserCreationForm):
-    username = forms.CharField(label = 'Username', widget= forms.TextInput(attrs = {'class':'form-input'}))
-    email = forms.EmailField(widget= forms.TextInput(attrs = {'class':'form-input'}))
-    password1 = forms.CharField(label = 'Password', widget= forms.PasswordInput(attrs = {'class':'form-input'}))
-    password2 = forms.CharField(label = 'Repeat password', widget = forms.PasswordInput(attrs = {'class':'form-input'}))
+    username = forms.CharField(label = 'Username', widget= forms.TextInput(attrs = {'class':'form-input','placeholder': 'Jonny'}))
+    email = forms.EmailField(widget= forms.TextInput(attrs = {'class':'form-input','placeholder': 'jon@email.com'}))
+    password1 = forms.CharField(label = 'Password', widget= forms.PasswordInput(attrs = {'class':'form-input','placeholder': '********'}))
+    password2 = forms.CharField(label = 'Repeat password', widget = forms.PasswordInput(attrs = {'class':'form-input','placeholder': '********'}))
 
     class Meta:
         model = User
@@ -17,10 +17,10 @@ class UserCreationForm(UserCreationForm):
 
 
 class UserEditForm(forms.Form):
-    username = forms.CharField(widget= forms.TextInput(attrs = {'class':'form-input'}))
-    email = forms.EmailField(widget= forms.TextInput(attrs = {'class':'form-input'}))
-    first_name = forms.CharField(widget= forms.TextInput(attrs = {'class':'form-input'}))
-    last_name= forms.CharField(widget= forms.TextInput(attrs = {'class':'form-input'}))
+    username = forms.CharField(widget= forms.TextInput(attrs = {'class':'form-input','placeholder': 'Jonny'}))
+    email = forms.EmailField(widget= forms.TextInput(attrs = {'class':'form-input','placeholder': 'jon@email.com'}))
+    first_name = forms.CharField(widget= forms.TextInput(attrs = {'class':'form-input','placeholder': 'Jon'}))
+    last_name= forms.CharField(widget= forms.TextInput(attrs = {'class':'form-input','placeholder': 'Doe'}))
     
     class Meta:
         model = User
@@ -43,4 +43,8 @@ class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(CustomAuthenticationForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-input'
+        self.fields['username'].widget.attrs['placeholder'] = 'Jonny'
+        self.fields['username'].widget.attrs['autocomplete'] = 'off'
         self.fields['password'].widget.attrs['class'] = 'form-input'
+        self.fields['password'].widget.attrs['placeholder'] = '********'
+        self.fields['password'].widget.attrs['autocomplete'] = 'off'

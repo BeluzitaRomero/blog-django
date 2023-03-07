@@ -7,12 +7,13 @@ class PostForm(ModelForm):
         model = Post
         fields = '__all__'
         exclude = ['author']
+        labels = {
+            'post_img': 'Image front page'
+        }
 
         widgets = {
-            'title': forms.TextInput(attrs = {'class':'form-input', 'placeholder': 'This is the title of the post'}),
-            'subtitle': forms.TextInput(attrs = {'class':'form-input'}),
-            
-            
+            'title': forms.TextInput(attrs = {'class':'form-input', 'placeholder': 'This is the title '}),
+            'subtitle': forms.TextInput(attrs = {'class':'form-input','placeholder': 'This is the subtitle'}), 
         }
 
  
@@ -22,7 +23,7 @@ class CommentForm(ModelForm):
         fields = '__all__'
         exclude = ['post_id', 'username']
         widgets ={
-            'comment': forms.Textarea(attrs={'class': 'form-control', 'style':'width: 100%;height: 25%; margin-top: 0.5rem' }),
+            'comment': forms.Textarea(attrs={'class': 'form-control','placeholder': 'Write your comment here... ', 'style':'width: 100%;height: 25%; margin-top: 0.5rem' }),
             
         }
 
