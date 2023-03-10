@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
+from django.views.generic import TemplateView
 
 
 
@@ -129,3 +130,9 @@ def delete_comment(request, pk):
 
 def about_me(request):
     return render(request, 'about-me.html')
+
+# ---------------------------------------------------------------------------- #
+#                                   ERROR 404                                  #
+# ---------------------------------------------------------------------------- #
+class Error_404(TemplateView):
+    template_name = '404.html'

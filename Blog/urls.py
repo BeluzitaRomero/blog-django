@@ -18,6 +18,9 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler400 
+
+from PostsApp.views import Error_404
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
@@ -35,6 +38,8 @@ urlpatterns = [
     path(r'^ckeditor/upload/', login_required(ckeditor_views.upload), name='ckeditor_upload'),
     path(r'^ckeditor/browse/', never_cache(login_required(ckeditor_views.browse)), name='ckeditor_browse'),
 ]
+
+handler400 = Error_404.as_view()
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
